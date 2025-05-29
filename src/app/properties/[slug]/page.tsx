@@ -1,48 +1,59 @@
 "use client";
 
-// import { useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import Image from "next/image";
-
-// Static property data
-const property = {
-  title: "Luxury Villa in Palm Jumeirah",
-  description:
-    "Experience unparalleled luxury in this stunning 6-bedroom villa located in the prestigious Palm Jumeirah. This architectural masterpiece offers breathtaking views of the Dubai skyline and the Arabian Gulf.",
-  images: {
-    main: "https://luxhabitat.ae/resizedimages/1920w/13674/source/e514ce6a405d7add130a7e3cfc6d40f6e8067628b9b3eb772d5df9961dccbaf0.jpg",
-    gallery: [
-      "https://luxhabitat.ae/resizedimages/1920w/13674/source/e514ce6a405d7add130a7e3cfc6d40f6e8067628b9b3eb772d5df9961dccbaf0.jpg",
-      "https://luxhabitat.ae/resizedimages/1920w/13674/source/e514ce6a405d7add130a7e3cfc6d40f6e8067628b9b3eb772d5df9961dccbaf0.jpg",
-      "https://luxhabitat.ae/resizedimages/1920w/13674/source/e514ce6a405d7add130a7e3cfc6d40f6e8067628b9b3eb772d5df9961dccbaf0.jpg",
-    ],
-  },
-  features: {
-    bedrooms: 6,
-    bathrooms: 7,
-    area: 12000,
-    parking: 4,
-  },
-  amenities: [
-    "Private Pool",
-    "Smart Home System",
-    "Home Theater",
-    "Wine Cellar",
-    "Private Beach Access",
-    "Garden",
-    "Security System",
-    "Staff Quarters",
-    "Gym",
-  ],
-  contactInfo: {
-    agent: "Sarah Johnson",
-    phone: "+971 50 123 4567",
-    email: "sarah.johnson@luxelist.ae",
-  },
-};
+import { useEffect, useState } from "react";
+import type { Property } from "@/types/property";
 
 export default function PropertyDetails() {
-  //   const params = useParams();
-  //   const slug = params.slug as string;
+  const params = useParams();
+  const [property, setProperty] = useState<Property | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        const response = await fetch(`/api/properties/${params.slug}`);
+        if (!response.ok) {
+          throw new Error("Property not found");
+        }
+        const data = await response.json();
+        setProperty(data);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "Failed to load property"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperty();
+  }, [params.slug]);
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="animate-pulse">
+          <div className="h-[60vh] bg-gray-200 rounded-lg mb-8"></div>
+          <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2 mb-8"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !property) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
+          <p className="text-gray-600">{error || "Property not found"}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main className="container mx-auto px-4 py-8">
