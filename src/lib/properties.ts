@@ -50,6 +50,7 @@ export async function getPropertySummaries(): Promise<PropertySummary[]> {
     title: property.title,
     price: property.price,
     location: {
+      destinationId: property.location.destinationId,
       city: property.location.city,
       state: property.location.state,
     },

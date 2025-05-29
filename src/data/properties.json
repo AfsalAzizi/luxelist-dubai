@@ -7,6 +7,7 @@
       "description": "Experience luxury living in this stunning penthouse at Burj Vista, offering breathtaking views of the Burj Khalifa and Dubai Fountain. This architectural masterpiece features floor-to-ceiling windows, private elevator access, and a rooftop terrace. The interior showcases the finest materials and finishes, with a gourmet kitchen, spa-like bathrooms, and smart home technology throughout.",
       "price": 25000000,
       "location": {
+        "destinationId": "dubai",
         "city": "Dubai",
         "state": "Dubai",
         "country": "UAE",
@@ -52,6 +53,7 @@
       "description": "Exclusive beachfront villa at the prestigious Bulgari Resort, offering direct access to pristine beaches and stunning views of the Arabian Gulf. This architectural gem features an infinity pool, private beach access, and spacious outdoor living areas. The interior combines contemporary design with traditional Arabic elements, creating a perfect blend of luxury and comfort.",
       "price": 35000000,
       "location": {
+        "destinationId": "dubai",
         "city": "Dubai",
         "state": "Dubai",
         "country": "UAE",
@@ -97,6 +99,7 @@
       "description": "Contemporary penthouse at One Palm, offering the perfect blend of luxury living and urban convenience. This architectural masterpiece features a private garden, state-of-the-art home automation, and panoramic views of the Dubai Marina. The interior showcases the finest Italian marble, custom lighting, and designer furniture throughout.",
       "price": 45000000,
       "location": {
+        "destinationId": "dubai",
         "city": "Dubai",
         "state": "Dubai",
         "country": "UAE",

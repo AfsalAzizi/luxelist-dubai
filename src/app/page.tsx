@@ -22,7 +22,10 @@ export default function Home() {
         // Filter properties based on criteria
         const filteredProperties = allProperties
           .filter((property) => {
-            if (destinationId && property.location.city !== destinationId)
+            if (
+              destinationId &&
+              property.location.destinationId !== destinationId
+            )
               return false;
             if (minPrice && property.price < minPrice) return false;
             if (maxPrice && property.price > maxPrice) return false;
@@ -34,6 +37,7 @@ export default function Home() {
             title: property.title,
             price: property.price,
             location: {
+              destinationId: property.location.destinationId,
               city: property.location.city,
               state: property.location.state,
             },

@@ -5,6 +5,7 @@ export interface Property {
   description: string;
   price: number;
   location: {
+    destinationId: string;
     city: string;
     state: string;
     country: string;
@@ -39,6 +40,7 @@ export interface PropertySummary {
   title: string;
   price: number;
   location: {
+    destinationId: string;
     city: string;
     state: string;
   };
