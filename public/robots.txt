@@ -1,0 +1,25 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://luxelist.ae/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow property pages
+Allow: /properties/
+Allow: /properties/*
+
+# Allow main pages
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /search
+
+# Crawl delay to prevent server overload
+Crawl-delay: 10 
