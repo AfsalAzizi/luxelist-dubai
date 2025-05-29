@@ -8,6 +8,8 @@ import PropertyCardSkeleton from "@/components/PropertyCardSkeleton";
 import { PropertySummary } from "@/models/property";
 import { getAllProperties } from "@/lib/properties";
 import Image from "next/image";
+import Script from "next/script";
+import Link from "next/link";
 
 export default function Home() {
   const [properties, setProperties] = useState<PropertySummary[]>([]);
@@ -15,6 +17,36 @@ export default function Home() {
   const [destinationId, setDestinationId] = useState<string | null>(null);
   const [minPrice, setMinPrice] = useState<number | null>(null);
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
+
+  // Generate structured data for properties
+  const generateStructuredData = () => {
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: properties.map((property, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "SingleFamilyResidence",
+          name: property.title,
+          description: property.shortDescription,
+          image: property.thumbnail,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: property.location.city,
+            addressRegion: property.location.state,
+          },
+          offers: {
+            "@type": "Offer",
+            price: property.price,
+            priceCurrency: "AED",
+            availability: "https://schema.org/InStock",
+          },
+        },
+      })),
+    };
+    return JSON.stringify(structuredData);
+  };
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -59,7 +91,29 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">LuxeList Dubai</h1>
+      {/* Structured Data */}
+      <Script
+        id="property-listings-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: generateStructuredData() }}
+      />
+
+      {/* Breadcrumbs */}
+      <nav aria-label="Breadcrumb" className="mb-4">
+        <ol className="flex items-center space-x-2 text-sm text-gray-500">
+          <li>
+            <Link href="/" className="hover:text-blue-600">
+              Home
+            </Link>
+          </li>
+          <li className="flex items-center">
+            <span className="mx-2">/</span>
+            <span className="text-gray-700">Properties</span>
+          </li>
+        </ol>
+      </nav>
+
+      <h1 className="text-4xl font-bold mb-8">Luxury Properties in Dubai</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1 space-y-4">
@@ -99,15 +153,20 @@ export default function Home() {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {properties.map((property, index) => (
-                <PropertyCard
-                  key={property.id}
-                  property={property}
-                  priority={index === 0}
-                />
-              ))}
-            </div>
+            <>
+              <div className="mb-4 text-sm text-gray-600">
+                Showing {properties.length} properties
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {properties.map((property, index) => (
+                  <PropertyCard
+                    key={property.id}
+                    property={property}
+                    priority={index === 0}
+                  />
+                ))}
+              </div>
+            </>
           )}
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { Property } from "@/types/property";
@@ -8,30 +8,33 @@ import Head from "next/head";
 
 export default function PropertyDetails() {
   const params = useParams();
+  const router = useRouter();
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProperty = async () => {
       try {
         const response = await fetch(`/api/properties/${params.slug}`);
         if (!response.ok) {
-          throw new Error("Property not found");
+          if (response.status === 404) {
+            router.push("/404");
+            return;
+          }
+          throw new Error("Failed to load property");
         }
         const data = await response.json();
         setProperty(data);
       } catch (err) {
-        setError(
-          err instanceof Error ? err.message : "Failed to load property"
-        );
+        console.error("Error fetching property:", err);
+        router.push("/404");
       } finally {
         setLoading(false);
       }
     };
 
     fetchProperty();
-  }, [params.slug]);
+  }, [params.slug, router]);
 
   if (loading) {
     return (
@@ -45,15 +48,8 @@ export default function PropertyDetails() {
     );
   }
 
-  if (error || !property) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
-          <p className="text-gray-600">{error || "Property not found"}</p>
-        </div>
-      </div>
-    );
+  if (!property) {
+    return null; // Return null since we're redirecting to 404
   }
 
   // Structured data for real estate listing
