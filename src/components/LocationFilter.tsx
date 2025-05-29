@@ -25,7 +25,7 @@ export default function LocationFilter({
       <h3 className="text-lg font-semibold mb-4">Location</h3>
       <select
         onChange={handleLocationChange}
-        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm py-2 px-3 focus:outline-none"
         defaultValue=""
       >
         <option value="">All Locations</option>

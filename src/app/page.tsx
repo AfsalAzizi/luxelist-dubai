@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import PropertyCard from "@/components/PropertyCard";
 import LocationFilter from "@/components/LocationFilter";
 import PriceRangeFilter from "@/components/PriceRangeFilter";
+import PropertyCardSkeleton from "@/components/PropertyCardSkeleton";
 import { PropertySummary } from "@/models/property";
 import { getAllProperties } from "@/lib/properties";
+import Image from "next/image";
 
 export default function Home() {
   const [properties, setProperties] = useState<PropertySummary[]>([]);
@@ -72,10 +74,29 @@ export default function Home() {
 
         <div className="lg:col-span-3">
           {loading ? (
-            <div className="text-center py-8">Loading properties...</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(3)].map((_, index) => (
+                <PropertyCardSkeleton key={index} />
+              ))}
+            </div>
           ) : properties.length === 0 ? (
-            <div className="text-center py-8">
-              No properties found matching your criteria.
+            <div className="flex flex-col items-center justify-center py-12 px-4">
+              <Image
+                src="/images/no-listing.jpg"
+                alt="No properties found"
+                width={400}
+                height={400}
+                className="mb-4"
+              />
+              <div className="flex flex-col items-center justify-center pt-4">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  No Properties Found
+                </h3>
+                <p className="text-gray-600 text-center text-lg">
+                  We couldn&apos;t find any properties matching your criteria.
+                  Try adjusting your filters.
+                </p>
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

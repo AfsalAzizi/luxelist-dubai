@@ -59,15 +59,15 @@ export default function PriceRangeFilter({
       <RadioGroup
         value={selectedRange}
         onChange={handleRangeChange}
-        className="space-y-2"
+        className="space-y-1"
       >
         {priceRanges.map((range) => (
           <FormControlLabel
             key={range.value}
             value={range.value}
-            control={<Radio />}
+            control={<Radio size="small" />}
             label={range.label}
-            className="hover:bg-gray-50 rounded-md px-2 py-1 cursor-pointer"
+            className="hover:bg-gray-50 rounded-md px-2 py-0.5 cursor-pointer text-sm"
           />
         ))}
       </RadioGroup>
