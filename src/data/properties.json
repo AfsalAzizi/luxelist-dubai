@@ -93,17 +93,17 @@
       }
     },
     {
-      "id": "3",
-      "slug": "one-palm-penthouse",
-      "title": "One Palm Penthouse by Omniyat",
-      "description": "Contemporary penthouse at One Palm, offering the perfect blend of luxury living and urban convenience. This architectural masterpiece features a private garden, state-of-the-art home automation, and panoramic views of the Dubai Marina. The interior showcases the finest Italian marble, custom lighting, and designer furniture throughout.",
-      "price": 45000000,
+      "id": "4",
+      "slug": "saadiyat-island-mansion",
+      "title": "Luxury Mansion on Saadiyat Island",
+      "description": "Exclusive waterfront mansion on the prestigious Saadiyat Island, offering panoramic views of the Arabian Gulf and direct access to pristine beaches. This architectural masterpiece features a private infinity pool, landscaped gardens, and a state-of-the-art home automation system. The interior combines contemporary luxury with traditional Emirati design elements, featuring premium finishes and custom-made furniture throughout.",
+      "price": 55000000,
       "location": {
-        "destinationId": "dubai",
-        "city": "Dubai",
-        "state": "Dubai",
+        "destinationId": "abu-dhabi",
+        "city": "Abu Dhabi",
+        "state": "Abu Dhabi",
         "country": "UAE",
-        "address": "One Palm, Palm Jumeirah"
+        "address": "Saadiyat Island, Cultural District"
       },
       "rating": 4.9,
       "thumbnail": "https://luxhabitat.ae/resizedimages/1920w/13674/source/e514ce6a405d7add130a7e3cfc6d40f6e8067628b9b3eb772d5df9961dccbaf0.jpg",
@@ -116,26 +116,28 @@
         ]
       },
       "features": {
-        "bedrooms": 8,
-        "bathrooms": 9,
-        "area": 20000,
-        "parking": 8
+        "bedrooms": 7,
+        "bathrooms": 8,
+        "area": 18000,
+        "parking": 6
       },
       "amenities": [
-        "Private Garden",
-        "Home Automation",
+        "Private Beach Access",
+        "Infinity Pool",
+        "Smart Home System",
         "Private Gym",
-        "Art Gallery",
+        "Wine Cellar",
+        "Staff Quarters",
         "Security System",
-        "Staff Quarters"
+        "Private Garden"
       ],
-      "propertyType": "apartment",
+      "propertyType": "villa",
       "status": "for-sale",
       "yearBuilt": 2023,
       "contactInfo": {
-        "agent": "Mohammed Al Hashimi",
-        "phone": "+971 50 456 7890",
-        "email": "mohammed.hashimi@luxuryhomes.ae"
+        "agent": "Khalid Al Suwaidi",
+        "phone": "+971 50 234 5678",
+        "email": "khalid.suwaidi@luxuryhomes.ae"
       }
     }
   ]

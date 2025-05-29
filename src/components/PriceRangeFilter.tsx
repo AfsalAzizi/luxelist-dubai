@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { RadioGroup, FormControlLabel, Radio, Typography } from "@mui/material";
+import { RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
 interface PriceRangeFilterProps {
   onFilterChange: (minPrice: number | null, maxPrice: number | null) => void;
@@ -51,10 +51,8 @@ export default function PriceRangeFilter({
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <Typography variant="h6" className="mb-4">
-        Price Range
-      </Typography>
+    <div className="p-4">
+      <h3 className="text-lg font-semibold mb-4">Price Range</h3>
 
       <RadioGroup
         value={selectedRange}

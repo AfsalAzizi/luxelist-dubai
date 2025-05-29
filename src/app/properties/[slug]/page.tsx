@@ -135,25 +135,25 @@ export default function PropertyDetails() {
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <div className="text-sm text-gray-500">Bedrooms</div>
+                  <div className="text-sm text-gray-500 mb-2">Bedrooms</div>
                   <div className="text-xl font-semibold">
                     {property.features.bedrooms}
                   </div>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <div className="text-sm text-gray-500">Bathrooms</div>
+                  <div className="text-sm text-gray-500 mb-2">Bathrooms</div>
                   <div className="text-xl font-semibold">
                     {property.features.bathrooms}
                   </div>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <div className="text-sm text-gray-500">Area</div>
+                  <div className="text-sm text-gray-500 mb-2">Area</div>
                   <div className="text-xl font-semibold">
                     {property.features.area} sq ft
                   </div>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg text-center">
-                  <div className="text-sm text-gray-500">Parking</div>
+                  <div className="text-sm text-gray-500 mb-2">Parking</div>
                   <div className="text-xl font-semibold">
                     {property.features.parking} spots
                   </div>

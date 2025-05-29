@@ -21,11 +21,11 @@ export default function LocationFilter({
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
+    <div className="p-4">
       <h3 className="text-lg font-semibold mb-4">Location</h3>
       <select
         onChange={handleLocationChange}
-        className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm py-2 px-3 focus:outline-none"
+        className="w-full rounded-md border border-gray-300 py-2 px-3 focus:outline-none"
         defaultValue=""
       >
         <option value="">All Locations</option>
